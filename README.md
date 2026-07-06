@@ -2,6 +2,14 @@
 
 A gym membership management dashboard built with **Angular 17**, **Firebase Authentication**, and **Firestore**.
 
+## Screenshots
+
+<div align="center">
+  <img src="docs/dashboard.jpg" alt="Dashboard Screen" width="800">
+  <br><br>
+  <img src="docs/login.jpg" alt="Login Screen" width="400">
+</div>
+
 ## Live Demo
 
 🌐 **[View Live App](https://gymflow-8894d.web.app)**
