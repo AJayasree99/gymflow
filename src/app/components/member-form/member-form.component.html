@@ -1,0 +1,81 @@
+<div class="modal-overlay" id="memberFormModal">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h2>{{ isEditing ? 'Edit Member' : 'Add New Member' }}</h2>
+      <button class="close-btn" id="closeFormBtn" (click)="cancel.emit()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <form id="memberForm" (ngSubmit)="onSubmit()" #f="ngForm" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="memberName">Full Name *</label>
+          <input
+            id="memberName"
+            type="text"
+            class="form-input"
+            placeholder="Jane Doe"
+            [(ngModel)]="name"
+            name="name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="memberContact">Contact *</label>
+          <input
+            id="memberContact"
+            type="text"
+            class="form-input"
+            placeholder="+91 98765 43210"
+            [(ngModel)]="contact"
+            name="contact"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="memberPlan">Plan *</label>
+          <select
+            id="memberPlan"
+            class="form-input"
+            [(ngModel)]="planId"
+            name="planId"
+            required
+          >
+            <option value="" disabled>Select a plan</option>
+            <option *ngFor="let plan of plans" [value]="plan.id">
+              {{ plan.name }} – {{ plan.months }} month{{ plan.months > 1 ? 's' : '' }} (₹{{ plan.price }})
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="memberStartAt">Start Date *</label>
+          <input
+            id="memberStartAt"
+            type="date"
+            class="form-input"
+            [(ngModel)]="startAt"
+            name="startAt"
+            required
+          />
+        </div>
+      </div>
+
+      <div *ngIf="planId && startAt" class="expiry-preview">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Membership expires on: <strong>{{ getExpiryPreview() }}</strong>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-ghost" id="cancelFormBtn" (click)="cancel.emit()">Cancel</button>
+        <button type="submit" class="btn-primary" id="saveMemberBtn" [disabled]="saving || !name || !contact || !planId || !startAt">
+          <span *ngIf="!saving">{{ isEditing ? 'Save Changes' : 'Add Member' }}</span>
+          <span *ngIf="saving" class="spinner"></span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
