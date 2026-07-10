@@ -14,6 +14,13 @@ A gym membership management dashboard built with **Angular 17**, **Firebase Auth
 
 🌐 **[View Live App](https://gymflow-8894d.web.app)**
 
+## Written Responses (PDFs)
+
+All three required written responses are uploaded to the repository:
+- 📄 **[Part 2: Technical Explanation](docs/Part_2_Explanation.pdf)**
+- 📄 **[Part 3: Website Critique](docs/Part_3_Critique.pdf)**
+- 📄 **[Part 4: Personal Reflection](docs/Part_4_Reflection.pdf)**
+
 ## Test Login Credentials
 
 | Field    | Value                     |
